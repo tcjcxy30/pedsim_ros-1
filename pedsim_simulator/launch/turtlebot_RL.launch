@@ -1,0 +1,78 @@
+<launch>
+  <arg name="kbd_teleop" default="true"/>
+  <arg name="rqt_teleop" default="true"/>
+  <arg name="visualize" default="true"/>
+  <arg name="with_robot" default="true"/>
+
+  <arg name="simulation_factor" default="2.0"/> <!-- Speed up -->
+  <arg name="update_rate" default="25.0"/> <!-- Hz -->
+
+  <!-- Turtlebot initial position -->
+  <arg name="initial_x" value="1.0"/>
+  <arg name="initial_y" value="1.0"/>
+  <arg name="initial_theta" value="0.7"/>
+
+  <!-- Simulator -->
+  <include file="$(find pedsim_simulator)/launch/simulator.launch">
+    <arg name="kbd_teleop" value="$(arg kbd_teleop)"/>
+    <arg name="rqt_teleop" value="$(arg rqt_teleop)"/>
+    <arg name="scene_file" value="$(find pedsim_simulator)scenarios/default_scenario.xml"/>
+    <arg name="with_robot" value="$(arg with_robot)"/>
+    <arg name="simulation_factor" value="$(arg simulation_factor)"/>
+    <arg name="update_rate" value="$(arg update_rate)"/>
+    <arg name="default_queue_size" value="10"/>
+    <arg name="max_robot_speed" value="5"/>
+    <arg name="robot_mode" value="1"/>
+    <arg name="enable_groups" value="true"/>
+    <!-- Below is turtlebot's initial position on pedsim_ros -->
+    <arg name="pose_initial_x" value="$(arg initial_x)"/>
+    <arg name="pose_initial_y" value="$(arg initial_y)"/>
+    <arg name="pose_initial_theta" value="$(arg initial_theta)"/>
+  </include>
+
+  <!-- Visualizer -->
+  <include file="$(find pedsim_visualizer)/launch/visualizer.launch"/>
+
+    <!-- Gazebo world -->
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="use_sim_time" value="true"/>
+    <arg name="debug" value="false"/>
+    <arg name="gui" value="true" />
+    <arg name="world_name" value="$(find comp150RL)/worlds/default_scenario/default_scenario.world"/>
+  </include> -->
+
+  <!-- ********************************** Turtlebot  ************************************** -->
+  <arg name="base"       default="$(optenv TURTLEBOT_BASE kobuki)"/>  <!-- base for turtlebot -->
+  <arg name="stacks"     default="$(optenv TURTLEBOT_STACKS hexagons)"/>  <!-- circles, hexagons -->
+  <arg name="3d_sensor"  default="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>  <!-- kinect, asus_xtion_pro -->
+
+  <!-- Robot Model -->
+  <include file="$(find pedsim_simulator)/launch/includes/turtlebot.launch.xml">
+    <arg name="base" value="$(arg base)" />
+    <arg name="stacks" value="$(arg stacks)" />
+    <arg name="3d_sensor" value="$(arg 3d_sensor)" />
+    <arg name="initial_pose" value="-x $(arg initial_x) -y $(arg initial_y) -z $(arg initial_theta)"/>
+  </include>
+
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="30.0" />
+  </node> -->
+
+  <!--  ************** Navigation  ***************  -->
+  <!-- <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/> -->
+
+  <!-- Fake laser -->
+  <!-- <node pkg="nodelet" type="nodelet" name="laserscan_nodelet_manager" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan"
+        args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet laserscan_nodelet_manager">
+    <param name="scan_height" value="10"/>
+    <param name="output_frame_id" value="/camera_depth_frame"/>
+    <param name="range_min" value="0.45"/>
+    <remap from="image" to="/camera/depth/image_raw"/>
+    <remap from="scan" to="/scan"/>
+  </node> -->
+
+  <!-- pedsim rviz -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find pedsim_simulator)/rviz/pedsim_turtlebot.rviz" if="$(arg visualize)"/>
+
+</launch>
