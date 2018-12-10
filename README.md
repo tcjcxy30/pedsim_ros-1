@@ -1,5 +1,5 @@
 # Pedestrian Simulator
-<img src=https://github.com/srl-freiburg/pedsim_ros/blob/master/pedsim_simulator/images/screenshot1.png width=400/>
+<img src=https://github.com/js0823/pedsim_ros/blob/master/pedsim_simulator/images/screenshot1.png width=400/>
 
 ROS packages for a 2D pedestrian simulator based on social force
 model of [Helbing et. al](http://arxiv.org/pdf/cond-mat/9805244.pdf). The implementation is based on an extended version of Christian Gloor's [libpedsim](http://pedsim.silmaril.org/) library which has been extended to include additional behaviors and activities. This packages is useful for robot navigation experiments with crowded scenes which are hard to acquire in practice.
