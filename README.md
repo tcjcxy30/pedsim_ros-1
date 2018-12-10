@@ -1,7 +1,5 @@
-# COMP150 Reinforcement Learning: Using RL to teach the Turtlebot avoid moving obstacles
+# COMP150 Reinforcement Learning: Path Planning Amidst Moving Obstacles
 <img src=https://github.com/js0823/pedsim_ros/blob/master/pedsim_simulator/images/screenshot1.png width=400/>
-
-
 
 ### Requirements
 - ROS-kinetic full desktop install
