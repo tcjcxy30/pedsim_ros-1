@@ -1,7 +1,7 @@
 <launch>
   <arg name="kbd_teleop" default="true"/>
   <arg name="rqt_teleop" default="true"/>
-  <arg name="visualize" default="true"/>
+  <arg name="visualize" default="false"/>
   <arg name="with_robot" default="true"/>
 
   <arg name="simulation_factor" default="2.0"/> <!-- Speed up -->
@@ -31,15 +31,15 @@
   </include>
 
   <!-- Visualizer -->
-  <include file="$(find pedsim_visualizer)/launch/visualizer.launch"/>
+  <!-- <include file="$(find pedsim_visualizer)/launch/visualizer.launch"/> -->
 
     <!-- Gazebo world -->
-  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="use_sim_time" value="true"/>
     <arg name="debug" value="false"/>
     <arg name="gui" value="true" />
-    <arg name="world_name" value="$(find comp150RL)/worlds/default_scenario/default_scenario.world"/>
-  </include> -->
+    <arg name="world_name" value="$(find pedsim_simulator)/worlds/default_scenario/default_scenario.world"/>
+  </include>
 
   <!-- ********************************** Turtlebot  ************************************** -->
   <arg name="base"       default="$(optenv TURTLEBOT_BASE kobuki)"/>  <!-- base for turtlebot -->
