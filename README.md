@@ -13,7 +13,7 @@ git clone https://github.com/js0823/pedsim_ros.git
 cd pedsim_ros
 git submodule update --init --recursive
 cd ../..
-catkin build -c  # or catkin_make
+catkin_make
 ```
 
 ### Sample usage
