@@ -27,5 +27,5 @@ If you wish to control the turtlebot via keyboard, you can use this on your othe
 ```
 roslaunch pedsim_simulator keyboard_teleop.launch
 ```
-### Licence
-Original pedsim_ros is here https://github.com/srl-freiburg/pedsim_ros
+### License
+Original pedsim_ros package is here https://github.com/srl-freiburg/pedsim_ros.
