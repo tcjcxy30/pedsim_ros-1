@@ -28,7 +28,7 @@ conda install tensorflow
 ```
 
 ### Package Installation
-
+Building our package is simple. Follow the command below.
 ```
 cd [workspace]/src
 git clone https://github.com/js0823/pedsim_ros.git  
@@ -36,6 +36,16 @@ cd pedsim_ros
 git submodule update --init --recursive
 cd ../..
 catkin_make
+```
+Above will build our package. To make use of it, you need to source the setup.bash in devel folder. To do this, I recommend putting it in your .bashrc file by doing
+
+```
+echo "source [workspace]/devel/setup.bash" >> ~/.bashrc
+```
+At the end, you should have two lines in your .bashrc that relates to ROS. They are
+```
+source /opt/ros/kinetic/setup.bash
+source [workspace]/devel/setup.bash
 ```
 
 ### Sample usage
