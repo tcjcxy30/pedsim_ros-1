@@ -17,6 +17,7 @@ sudo apt-get install gazebo7
 gazebo --version (should return 7.14.0 or above)
 ```
 - Setting up python2 using anaconda
+
 If you want to use python from anaconda, you need to install the following package in anaconda python by running commands below.
 ```
 pip install catkin_pkg
