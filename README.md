@@ -25,7 +25,7 @@ pip install rospkg
 ```
 Then follow below to install machine learning packages in anaconda python.
 ```
-conda install tensorflow
+conda install keras
 ```
 
 ### Package Installation
