@@ -31,7 +31,7 @@
   </include>
 
   <!-- Visualizer -->
-  <!-- <include file="$(find pedsim_visualizer)/launch/visualizer.launch"/> -->
+  <include file="$(find pedsim_visualizer)/launch/visualizer.launch"/>
 
     <!-- Gazebo world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -54,7 +54,7 @@
     <arg name="initial_pose" value="-x $(arg initial_x) -y $(arg initial_y) -z $(arg initial_theta)"/>
   </include>
 
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
     <param name="publish_frequency" type="double" value="25.0" />
   </node>
 
