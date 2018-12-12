@@ -16,6 +16,16 @@ sudo apt-get update
 sudo apt-get install gazebo7
 gazebo --version (should return 7.14.0 or above)
 ```
+- Setting up python2 using anaconda
+To use python from anaconda, you need to install the following package in anaconda python by pasting these commands below.
+```
+pip install catkin_pkg
+pip install rospkg
+```
+Then follow below to install machine learning packages in anaconda python.
+```
+conda install tensorflow
+```
 
 ### Package Installation
 
